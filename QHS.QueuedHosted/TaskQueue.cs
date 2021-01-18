@@ -23,7 +23,7 @@ namespace QHS.QueuedHosted
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns>return the Task workItem</returns>
-        public async Task<Func<CancellationToken, IServiceScopeFactory, Task>> DequeueAsync(CancellationToken cancellationToken, IServiceScopeFactory serviceScopeFactory = null)
+        public async Task<Func<CancellationToken, IServiceScopeFactory, Task>> DequeueAsync(CancellationToken cancellationToken)
         {
             await _signal.WaitAsync(cancellationToken);
             _workItems.TryDequeue(out var workItem);

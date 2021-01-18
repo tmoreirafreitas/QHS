@@ -26,13 +26,13 @@ namespace QHS.QueuedHosted
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns>return the Task workItem</returns>
-        Task<Func<CancellationToken, IServiceScopeFactory, Task>> DequeueAsync(CancellationToken cancellationToken, IServiceScopeFactory serviceScopeFactory = null);
+        Task<Func<CancellationToken, IServiceScopeFactory, Task>> DequeueAsync(CancellationToken cancellationToken);
     }
 
     public interface ITaskQueue<T>
     {
         void QueueWorkItem(Func<CancellationToken, Task<T>> workItem);
         void QueueWorkItem(Func<CancellationToken, IServiceScopeFactory, Task<T>> workItem);
-        Task<Func<CancellationToken, IServiceScopeFactory, Task<T>>> DequeueAsync(CancellationToken cancellationToken, IServiceScopeFactory serviceScopeFactory = null);
+        Task<Func<CancellationToken, IServiceScopeFactory, Task<T>>> DequeueAsync(CancellationToken cancellationToken);
     }
 }
